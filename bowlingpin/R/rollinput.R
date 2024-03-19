@@ -1,5 +1,4 @@
 # Function to take user input for throws for a single player
-#' Title
 #'
 #' @param player_num
 #'
@@ -7,7 +6,7 @@
 #' @export
 #'
 #' @examples
-get_user_input <- function(player_num) {
+user_input <- function(player_num) {
   cat("Player", player_num, ":\n")
   throws <- numeric(0)
   frame <- 1
