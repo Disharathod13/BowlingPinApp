@@ -7,15 +7,11 @@
 rollinput(player_num)
 }
 \arguments{
-\item{player_num}{}
+\item{player_num}{A number indicating if it is player 1 or player 2}
 }
 \value{
 A numeric vector representing the sequence of pins knocked down by the player in each throw.
 }
 \description{
 Function to take user input for throws for a single player
-}
-\examples{
-# scores for player 2
-rollinput(2)
 }

@@ -1,11 +1,10 @@
 Package: bowlingpin
-Title: Counting the score of a ten-pin bowling game. 
+Title: Counting the score of a ten-pin bowling game
 Version: 0.0.0.9000
 Authors@R: 
-    person("Disha", "Rathod", , "drat0009@student.monash.edu", role = c("aut", "cre"),
-           comment = c(ORCID = "33527962"))
+    person("Disha", "Rathod", "drat0009@student.monash.edu", role = c("aut", "cre"))
 Description: It counts the score of a ten-pin bowling game for players and returns the final score after the players add their score for each roll.
-License: `use_mit_license()`
+License: 
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1

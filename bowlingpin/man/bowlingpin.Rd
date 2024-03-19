@@ -4,7 +4,12 @@
 \alias{bowlingpin}
 \title{Main function to run the game for two players}
 \usage{
-bowlingpin()
+bowlingpin(player1_rolls, player2_rolls)
+}
+\arguments{
+\item{player1_rolls}{A numeric vector having scores for every throw of player 1}
+
+\item{player2_rolls}{A numeric vector having scores for every throw of player 2}
 }
 \value{
 A numeric vector containing the total score for each user.
@@ -13,5 +18,7 @@ A numeric vector containing the total score for each user.
 Main function to run the game for two players
 }
 \examples{
-bowlingpin()
+player1_rolls <- c(2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2)
+player2_rolls <- c(2,2,2,2,8,2,6,2,2,2,2,2,5,2,2,2,4,2,2,3)
+bowlingpin(player1_rolls,player2_rolls)
 }
