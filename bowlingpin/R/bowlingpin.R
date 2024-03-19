@@ -10,20 +10,20 @@ bowlingpin_game <- function() {
   cat("Welcome to the ten-pin bowling game!\n")
 
   # Get throws for Player 1
-  throws_player1 <- user_input(1)
-  if (is.null(throws_player1)) {
+ player1_rolls <- user_input(1)
+  if (is.null(player1_rolls)) {
     return()
   }
 
   # Get throws for Player 2
-  throws_player2 <- user_input(2)
-  if (is.null(throws_player2)) {
+  player2_rolls <- user_input(2)
+  if (is.null(player2_rolls)) {
     return()
   }
 
   # Calculate scores for Player 1 and Player 2
-  score_player1 <- calculate_bowling_score(throws_player1)
-  score_player2 <- calculate_bowling_score(throws_player2)
+  score_player1 <- calculate_bowling_score(player1_rolls)
+  score_player2 <- calculate_bowling_score(player2_rolls)
 
   # Display scores
   cat("\nFinal scores:\n")

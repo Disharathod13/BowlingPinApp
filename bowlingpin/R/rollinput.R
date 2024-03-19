@@ -65,7 +65,7 @@ user_input <- function(player_num) {
       throws <- c(throws, pins)
 
       pins2_prompt <- paste("Enter number of pins knocked down in throw 2 of frame", frame, ": ")
-      if (pins < 10) {
+      if (pins <= 10) {
         pins2_max <- 10 - pins
         pins <- as.integer(readline(prompt = pins2_prompt))
         if (pins < 0 || pins > pins2_max) {
