@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Disha", "Rathod", "drat0009@student.monash.edu", role = c("aut", "cre"))
 Description: It counts the score of a ten-pin bowling game for players and returns the final score after the players add their score for each roll.
-License: 
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
