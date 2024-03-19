@@ -5,18 +5,18 @@
 #' @export
 #'
 #' @examples
-#' bowlingpin_game()
-bowlingpin_game <- function() {
+#' bowlingpin()
+bowlingpin <- function() {
   cat("Welcome to the ten-pin bowling game!\n")
 
   # Get throws for Player 1
- player1_rolls <- user_input(1)
+ player1_rolls <- rollinput(1)
   if (is.null(player1_rolls)) {
     return()
   }
 
   # Get throws for Player 2
-  player2_rolls <- user_input(2)
+  player2_rolls <- rollinput(2)
   if (is.null(player2_rolls)) {
     return()
   }

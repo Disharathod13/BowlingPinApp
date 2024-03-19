@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-user_input <- function(player_num) {
+rollinput <- function(player_num) {
   cat("Player", player_num, ":\n")
   throws <- numeric(0)
   frame <- 1
