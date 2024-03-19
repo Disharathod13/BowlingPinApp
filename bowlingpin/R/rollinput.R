@@ -1,11 +1,13 @@
-# Function to take user input for throws for a single player
+#' Function to take user input for throws for a single player
 #'
 #' @param player_num
 #'
-#' @return
+#' @return A numeric vector representing the sequence of pins knocked down by the player in each throw.
 #' @export
 #'
 #' @examples
+#' # scores for player 2
+#' rollinput(2)
 rollinput <- function(player_num) {
   cat("Player", player_num, ":\n")
   throws <- numeric(0)

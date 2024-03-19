@@ -1,5 +1,4 @@
-
-# Main function to run the game for two players
+#' Main function to run the game for two players
 #'
 #' @return A numeric vector containing the total score for each user.
 #' @export
