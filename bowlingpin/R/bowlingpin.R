@@ -1,4 +1,6 @@
-#' Main function to run the game for two players
+#' Main function to run the ten-pin bowling game for two players
+#' @description
+#' Enter your individual game scores and the function will give you the total score at the end
 #'
 #' @param player1_rolls A numeric vector having scores for every throw of player 1
 #' @param player2_rolls A numeric vector having scores for every throw of player 2

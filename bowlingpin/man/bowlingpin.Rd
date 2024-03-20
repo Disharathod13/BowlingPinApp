@@ -2,7 +2,7 @@
 % Please edit documentation in R/bowlingpin.R
 \name{bowlingpin}
 \alias{bowlingpin}
-\title{Main function to run the game for two players}
+\title{Main function to run the ten-pin bowling game for two players}
 \usage{
 bowlingpin(player1_rolls, player2_rolls)
 }
@@ -15,7 +15,7 @@ bowlingpin(player1_rolls, player2_rolls)
 A numeric vector containing the total score for each user.
 }
 \description{
-Main function to run the game for two players
+Enter your individual game scores and the function will give you the total score at the end
 }
 \examples{
 player1_rolls <- c(2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2)
