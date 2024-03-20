@@ -15,3 +15,11 @@ A numeric vector representing the sequence of pins knocked down by the player in
 \description{
 Function to take user input for throws for a single player
 }
+\examples{
+rolls <- function(){
+  player1 <- rollinput(1)
+  player2 <- rollinput(2)
+}
+
+
+}
