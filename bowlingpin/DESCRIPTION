@@ -3,7 +3,7 @@ Title: Counting the score of a ten-pin bowling game
 Version: 0.0.0.9000
 Authors@R: 
     person("Disha", "Rathod", , "drat0009@student.monash.edu", role = c("aut", "cre"))
-Description: It counts the score of a ten-pin bowling game for players and returns the final score after the players add their score for each roll.
+Description: It counts the score of a ten-pin bowling game for two players and returns the final score after the players add their score. For now, it just adds up the score and might give the exact score-sum of strikes and spares.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

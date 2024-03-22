@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/numbats/assignment-1-package-creation-Disharathod13/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/numbats/assignment-1-package-creation-Disharathod13/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The "bowlingpin" package provides a function to simulate a ten-pin bowling game between two players, calculating their final scores based on their rolls. It accounts for strikes, spares, and open frames in each player's ten frames, returning their scores. This package is a convenient tool for analyzing and comparing bowling performances between players in a simple and efficient manner.
+The "bowlingpin" package provides a function to simulate a ten-pin bowling game between two players, calculating their final scores based on their rolls. It accounts for strikes, spares, and open frames in each player's ten frames, returning their scores(Although, the scores for strikes and spares are not doubled as the exact real-game, but we will focus on that in the next update of this package). This package is a convenient tool for analyzing and comparing bowling performances between players in a simple and efficient manner.
 
 ## Installation
 
