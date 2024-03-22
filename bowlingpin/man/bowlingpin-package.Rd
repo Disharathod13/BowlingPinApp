@@ -5,7 +5,7 @@
 \alias{bowlingpin-package}
 \title{bowlingpin: Counting the score of a ten-pin bowling game}
 \description{
-It counts the score of a ten-pin bowling game for players and returns the final score after the players add their score for each roll.
+It counts the score of a ten-pin bowling game for two players and returns the final score after the players add their score. For now, it just adds up the score and might give the exact score-sum of strikes and spares.
 }
 \author{
 \strong{Maintainer}: Disha Rathod \email{drat0009@student.monash.edu}
