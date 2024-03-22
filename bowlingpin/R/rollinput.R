@@ -64,8 +64,7 @@ rollinput <- function(player_num) {
       # For frames 1 to 9
       pins <- as.integer(readline(prompt = paste("Enter number of pins knocked down in throw 1 of frame", frame, ": ")))
       if (pins < 0 || pins > 10) {
-        cat("Invalid input! Number of pins knocked down must be between 0 and 10.\n")
-        return(NULL)
+        stop("Invalid input! Number of pins knocked down must be between 0 and 10.\n")
       }
       throws <- c(throws, pins)
 

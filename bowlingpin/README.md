@@ -1,0 +1,47 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# bowlingpin
+
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/numbats/assignment-1-package-creation-Disharathod13/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/numbats/assignment-1-package-creation-Disharathod13/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+The “bowlingpin” package provides a function to simulate a ten-pin
+bowling game between two players, calculating their final scores based
+on their rolls. It accounts for strikes, spares, and open frames in each
+player’s ten frames, returning their scores. This package is a
+convenient tool for analyzing and comparing bowling performances between
+players in a simple and efficient manner.
+
+## Installation
+
+You can install the development version of bowlingpin from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("numbats/assignment-1-package-creation-Disharathod13")
+```
+
+## Example
+
+This is a basic example which shows you how to calculate total scores of
+a ten pin bowling game for 2 players.
+
+``` r
+library(bowlingpin)
+player1_rolls <- c(2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2)
+player2_rolls <- c(2,2,2,2,8,2,6,2,2,2,2,2,5,2,2,2,4,2,2,3)
+bowlingpin(player1_rolls,player2_rolls)
+#> Welcome to the ten-pin bowling game!
+#> 
+#> Final scores:
+#> Player 1: 40 
+#> Player 2: 62
+```
+
+You can also use rollinput function to enter the scores for each throw
+in each frame for each player and use the output from that for
+calculating the final score.
