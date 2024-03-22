@@ -70,6 +70,7 @@ bowlingpin <- function(player1_rolls,player2_rolls) {
   cat("\nFinal scores:\n")
   cat("Player 1:", score_player1, "\n")
   cat("Player 2:", score_player2, "\n")
+  invisible(c(score_player1,score_player2))
 }
 
 
