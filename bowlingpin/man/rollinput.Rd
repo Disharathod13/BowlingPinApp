@@ -13,7 +13,7 @@ rollinput(player_num)
 A numeric vector representing the sequence of pins knocked down by the player in each throw.
 }
 \description{
-Function to take user input for throws for a single player
+Players can input their scores for each throw instead of creating a list of themselves. This function also checks for the maximum score available for each throw/ each frame.
 }
 \examples{
 rolls <- function(){

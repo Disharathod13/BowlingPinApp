@@ -1,4 +1,6 @@
 #' Function to take user input for throws for a single player
+#' @description
+#' Players can input their scores for each throw instead of creating a list of themselves. This function also checks for the maximum score available for each throw/ each frame.
 #'
 #' @param player_num A number indicating if it is player 1 or player 2
 #'
