@@ -27,7 +27,4 @@ bowling_leaderboard <- function(player1_rolls, player2_rolls) {
   return(winner)
 }
 
-# Example usage
-player1_rolls <- c(2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2)
-player2_rolls <- c(2,2,2,2,8,2,6,2,2,2,2,2,5,2,2,2,4,2,2,3)
-winner <- bowling_leaderboard(player1_rolls, player2_rolls)
+
