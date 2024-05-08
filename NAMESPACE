@@ -2,4 +2,5 @@
 
 export(bowlingpin)
 export(max_gutters)
+export(max_strikes)
 export(rollinput)
