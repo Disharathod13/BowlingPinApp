@@ -15,7 +15,4 @@ An integer representing the number of gutters in the player's rolls.
 \description{
 Calculate the number of gutters in a player's rolls.
 }
-\examples{
-player_rolls <- c(4, 5, 0, 6, 0, 0, 0, 0, 0, 0, 7, 3, 0, 0, 5, 0, 5, 0, 10, 0, 5)
-calculate_gutters(player_rolls)
-}
+\keyword{internal}
