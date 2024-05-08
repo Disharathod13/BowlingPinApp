@@ -1,18 +1,33 @@
+#' Determine the winner of a bowling game between two players.
+#'
+#' This function calculates the scores for two players in a bowling game and determines the winner. It also displays the final scores of both players.
+#'
+#' @param player1_rolls A numeric vector representing the scores for every throw of player 1.
+#' @param player2_rolls A numeric vector representing the scores for every throw of player 2.
+#'
+#' @return A character string indicating the winner of the game ("Player 1", "Player 2", or "Tie").
+#'
+#' @examples
+#' player1_rolls <- c(2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2)
+#' player2_rolls <- c(2,2,2,2,8,2,6,2,2,2,2,2,5,2,2,2,4,2,2,3)
+#' bowling_leaderboard(player1_rolls, player2_rolls)
+#'
+#' @export
 bowling_leaderboard <- function(player1_rolls, player2_rolls) {
   if (is.null(player1_rolls) || is.null(player2_rolls)) {
     stop("Both players must have rolls.")
   }
 
-  # Calculate scores for Player 1 and Player 2
+# Calculate scores for Player 1 and Player 2
   score_player1 <- calculate_bowling_score(player1_rolls)
   score_player2 <- calculate_bowling_score(player2_rolls)
 
-  # Display scores
+# Display scores
   cat("Final scores:\n")
   cat("Player 1:", score_player1, "\n")
   cat("Player 2:", score_player2, "\n")
 
-  # Determine the winner
+# Determine the winner
   if (score_player1 > score_player2) {
     cat("Player 1 wins!")
     winner <- "Player 1"
