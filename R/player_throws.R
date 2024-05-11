@@ -1,3 +1,21 @@
+
+#' Title
+#'
+#' @param player_no player number
+#' @param throws a list of throws of each player
+#' @param score total score
+#'
+#' @return throws a record
+#' @export
+#'
+#' @examples
+#'
+#' player_rolls <- player_throws(player_no = c(1, 2, 3),
+#' throws = list(
+#' c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 6, 10),
+#' c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 3),
+#' c(1, 2, 3, 4, 5, 3, 1, 8, 9, 1, 2, 3, 4, 5, 2, 7, 8, 1, 10, 0, 10)
+#' ))
 player_throws <- function(player_no, throws, score= numeric()) {
   if (length(player_no) != length(throws)) {
     stop("Length of player_no and throws must be the same.")
@@ -99,14 +117,6 @@ player_throws <- function(player_no, throws, score= numeric()) {
   return(throws)
 }
 
-
-
-player_throwsjhvadjhv <- player_throws(player_no = c(1, 2, 3),
-                                       throws = list(
-                                         c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 6, 10),
-                                         c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 3),
-                                         c(1, 2, 3, 4, 5, 3, 1, 8, 9, 1, 2, 3, 4, 5, 2, 7, 8, 1, 10, 0, 10)
-                                       ))
 # Casting throws to data frame
 vec_cast.data.frame.throws <- function(x, to, ...){
   vctrs::vec_data(x)
@@ -117,6 +127,8 @@ vec_cast.throws.data.frame <- function(x, to, ...){
   player_throws(x$player_no,x$throws, x$score)
 }
 
+
+#' @export
 # Redefine the custom format method for the throws class
 format.throws <- function(x, ...) {
   players <- vctrs::field(x, "player_no")
