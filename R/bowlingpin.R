@@ -9,76 +9,76 @@
 #' @export
 #'
 #' @examples
-#' player1_rolls <- c(2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2)
-#' player2_rolls <- c(2,2,2,2,8,2,6,2,2,2,2,2,5,2,2,2,4,2,2,3)
-#' bowlingpin(player1_rolls,player2_rolls)
+#' player_rolls<- player_throws(player_no = c(1, 2, 3),
+#' throws = list(
+#' c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 6, 10),
+#' c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 3),
+#' c(1, 2, 3, 4, 5, 3, 1, 8, 9, 1, 2, 3, 4, 5, 2, 7, 8, 1, 10, 0, 10)
+#' ))
+#' bowlingpin(player_rolls)
 
-bowlingpin <- function(player1_rolls, player2_rolls) {
-  # Get throws for Player 1
-  if (is.null(player1_rolls)) {
-    return()
-  }
+bowlingpin <- function(player_rolls) {
+  players_df <- vec_cast.data.frame.throws(player_rolls)
 
-  # Get throws for Player 2
-  if (is.null(player2_rolls)) {
-    return()
-  }
+  # Calculate sum of throws for each row and create a new column named "score"
+  players_df$score <- sapply(players_df$throws, sum)
 
-
-  # Calculate scores for Player 1 and Player 2
-  score_player1 <- calculate_bowling_score(player1_rolls)
-  score_player2 <- calculate_bowling_score(player2_rolls)
-
-  # Display scores
-  return(c(score_player1, score_player2))
+  vec_cast.throws.data.frame((players_df))
 }
-
-
 
 calculate_bowling_score <- function(throws) {
-  score <- 0
-  throw_index <- 1
-  frame <- 1
+  players_df <- vec_cast.data.frame.throws(throws)
 
-  while (frame <= 10) {
-    if (frame == 10) {
-      # Check for the 10th frame
-      if (throws[throw_index] == 10) {
-        # Strike on first throw
-        score <-
-          score + 10 + throws[throw_index + 1] + throws[throw_index + 2]
-        throw_index <- throw_index + 1
-      } else if (sum(throws[throw_index:(throw_index + 1)]) == 10) {
-        # Spare on first two throws
-        score <- score + 10 + throws[throw_index + 2]
-        throw_index <- throw_index + 2
-      } else {
-        # Open frame
-        score <-
-          score + throws[throw_index] + throws[throw_index + 1]
-        throw_index <- throw_index + 2
-      }
-    } else {
-      if (throws[throw_index] == 10) {
-        # Strike
-        score <-
-          score + 10 + throws[throw_index + 1] + throws[throw_index + 2]
-        throw_index <- throw_index + 1
-      } else if (sum(throws[throw_index:(throw_index + 1)]) == 10) {
-        # Spare
-        score <- score + 10 + throws[throw_index + 2]
-        throw_index <- throw_index + 2
-      } else {
-        # Open frame
-        score <-
-          score + throws[throw_index] + throws[throw_index + 1]
-        throw_index <- throw_index + 2
-      }
-    }
+  # Calculate sum of throws for each row and create a new column named "score"
+  players_df$score <- sapply(players_df$throws, sum)
 
-    frame <- frame + 1
-  }
-
-  return(score)
+  return(players_df)
 }
 
+# unvectorised bowling score with validations
+# calculate_bowling_score <- function(throws) {
+#   score <- 0
+#   throw_index <- 1
+#   frame <- 1
+#
+#   while (frame <= 10) {
+#     if (frame == 10) {
+#       # Check for the 10th frame
+#       if (throws[throw_index] == 10) {
+#         # Strike on first throw
+#         score <-
+#           score + 10 + throws[throw_index + 1] + throws[throw_index + 2]
+#         throw_index <- throw_index + 1
+#       } else if (sum(throws[throw_index:(throw_index + 1)]) == 10) {
+#         # Spare on first two throws
+#         score <- score + 10 + throws[throw_index + 2]
+#         throw_index <- throw_index + 2
+#       } else {
+#         # Open frame
+#         score <-
+#           score + throws[throw_index] + throws[throw_index + 1]
+#         throw_index <- throw_index + 2
+#       }
+#     } else {
+#       if (throws[throw_index] == 10) {
+#         # Strike
+#         score <-
+#           score + 10 + throws[throw_index + 1] + throws[throw_index + 2]
+#         throw_index <- throw_index + 1
+#       } else if (sum(throws[throw_index:(throw_index + 1)]) == 10) {
+#         # Spare
+#         score <- score + 10 + throws[throw_index + 2]
+#         throw_index <- throw_index + 2
+#       } else {
+#         # Open frame
+#         score <-
+#           score + throws[throw_index] + throws[throw_index + 1]
+#         throw_index <- throw_index + 2
+#       }
+#     }
+#
+#     frame <- frame + 1
+#   }
+#
+#   return(score)
+# }
