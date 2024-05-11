@@ -1,11 +1,12 @@
-
-#' Title
+#' Player Throws and Scores
 #'
-#' @param player_no player number
-#' @param throws a list of throws of each player
-#' @param score total score
+#' Functions to handle player throws in a ten pin bowling game and calculate their scores.
 #'
-#' @return throws a record
+#' @param player_no Player number
+#' @param throws A list of throws of each player
+#' @param score Total score
+#'
+#' @return Throws a record
 #' @export
 #'
 #' @examples
