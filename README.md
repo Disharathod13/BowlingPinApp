@@ -4,16 +4,28 @@
 # bowlingpin
 
 <!-- badges: start -->
-
-[![R-CMD-check](https://github.com/numbats/assignment-1-package-creation-Disharathod13/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/numbats/assignment-1-package-creation-Disharathod13/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The “bowlingpin” package provides a function to simulate a ten-pin
-bowling game between two players, calculating their final scores based
-on their rolls. It accounts for strikes, spares, and open frames in each
-player’s ten frames, returning their scores. This package is a
-convenient tool for analyzing and comparing bowling performances between
-players in a simple and efficient manner.
+The “bowlingpin” package provides functions to calculate and display
+bowling scores for players based on their throws. It includes a function
+to calculate scores and another to format the results into a custom
+vector format. Additionally, the package ensures validation of input
+data and offers clear documentation with usage examples. The
+“max_gutters” function of bowlingpin package compares the number of
+gutters between players rolls and determines which player had the most,
+providing a message with the player’s identifier and the count of
+gutters. The “max_strikes” function compares the number of strikes
+between two players rolls and identifies the player with the highest
+count, providing a message indicating the player and the number of
+strikes they achieved. The “bowling_winner” function determines the
+winner of a bowling game between players based on their scores,
+showcasing the victorious player’s identity. The “player_throws”
+function manages player throws in a ten-pin bowling game, ensuring
+compliance with game rules by accepting player numbers, throws (as a
+list), and optionally, scores. Thorough validation checks are performed
+to ensure the integrity of input data. Additionally, “format.throws”
+facilitates the presentation of bowling scorecards, organizing player
+throws and scores into a structured and visually comprehensible format.
 
 ## Installation
 
@@ -22,26 +34,124 @@ You can install the development version of bowlingpin from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("numbats/assignment-1-package-creation-Disharathod13")
+devtools::install_github("Advanced-R-Programming/assignment-3-package-completion-Disharathod13")
 ```
 
 ## Example
 
-This is a basic example which shows you how to calculate total scores of
-a ten pin bowling game for 2 players.
+This is a basic example which shows you how to use the bowlingpin
+function.
 
 ``` r
 library(bowlingpin)
-player1_rolls <- c(2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2)
-player2_rolls <- c(2,2,2,2,8,2,6,2,2,2,2,2,5,2,2,2,4,2,2,3)
-bowlingpin(player1_rolls,player2_rolls)
-#> Welcome to the ten-pin bowling game!
-#> 
-#> Final scores:
-#> Player 1: 40 
-#> Player 2: 62
+player_rolls <- player_throws(player_no = c(1, 2, 3),
+ throws = list(
+ c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 6, 10),
+ c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 3),
+ c(1, 2, 3, 4, 5, 3, 1, 8, 9, 1, 2, 3, 4, 5, 2, 7, 8, 1, 10, 0, 10)
+  ))
+bowlingpin(player_rolls)
+#> <throws[3]>
+#> Player 1  Player 2  Player 3  
+#> 2         2         1
+#> 3         3         2
+#> 4         4         3
+#> 5         5         4
+#> 6         6         5
+#> /         /         3
+#> 8         8         1
+#> 1         1         8
+#> 1         1         9
+#> 2         2         /
+#> 3         3         2
+#> 4         4         3
+#> 5         5         4
+#> /         /         5
+#> 7         7         2
+#> 2         2         7
+#> 9         9         8
+#> /         /         1
+#> 4         4         X
+#> /         3         -
+#> 10         -         X
+#> ---------------------------
+#> 92        79        89
+#> NULL
 ```
 
-You can also use rollinput function to enter the scores for each throw
-in each frame for each player and use the output from that for
-calculating the final score.
+This is a basic example which shows you how to use the max_gutters
+function.
+
+``` r
+ library(bowlingpin)
+ player1_rolls <- c(0, 0, 3, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+ player2_rolls <- c(0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0)
+max_gutters(player1_rolls, player2_rolls)
+#> Both players had the same number of gutters in the game with 18 gutters each.
+bowlingpin(player_rolls)
+#> <throws[3]>
+#> Player 1  Player 2  Player 3  
+#> 2         2         1
+#> 3         3         2
+#> 4         4         3
+#> 5         5         4
+#> 6         6         5
+#> /         /         3
+#> 8         8         1
+#> 1         1         8
+#> 1         1         9
+#> 2         2         /
+#> 3         3         2
+#> 4         4         3
+#> 5         5         4
+#> /         /         5
+#> 7         7         2
+#> 2         2         7
+#> 9         9         8
+#> /         /         1
+#> 4         4         X
+#> /         3         -
+#> 10         -         X
+#> ---------------------------
+#> 92        79        89
+#> NULL
+```
+
+This is a basic example which shows you how to use the max_strikes
+function.
+
+``` r
+library(bowlingpin)
+ player1_rolls <- c(10, 3, 4, 10, 5, 10, 7, 2, 3, 4, 10, 10, 10, 6, 7, 8, 9, 1, 2, 3)
+ player2_rolls <- c(10, 10, 4, 3, 5, 10, 10, 2, 3, 4, 10, 10, 10, 6, 7, 8, 9, 1, 2, 3)
+max_strikes(player1_rolls, player2_rolls)
+#> Player 2 had the most strikes in the game with 7 strikes.
+```
+
+This is a basic example which shows you how to use the bowling_winner
+function.
+
+``` r
+library(bowlingpin)
+  player_rolls <- player_throws(player_no = c(1, 2, 3),
+ throws = list(
+ c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 6, 10),
+ c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 3),
+ c(1, 2, 3, 4, 5, 3, 1, 8, 9, 1, 2, 3, 4, 5, 2, 7, 8, 1, 10, 0, 10)
+ ))
+ bowling_winner(player_rolls)
+#> Player 1 is the winner
+```
+
+This is a basic example which shows you how to use the player_throws
+function.
+
+``` r
+library(bowlingpin)
+ player_rolls <- player_throws(player_no = c(1, 2, 3),
+ throws = list(
+ c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 6, 10),
+ c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 3),
+ c(1, 2, 3, 4, 5, 3, 1, 8, 9, 1, 2, 3, 4, 5, 2, 7, 8, 1, 10, 0, 10)
+ ))
+```

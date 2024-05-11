@@ -1,3 +1,5 @@
+utils::globalVariables("score")
+
 #' Player Throws and Scores
 #'
 #' Functions to handle player throws in a ten pin bowling game and calculate their scores.
@@ -5,6 +7,7 @@
 #' @param player_no Player number
 #' @param throws A list of throws of each player
 #' @param score Total score
+#' @importFrom vctrs vec_assert vec_is_empty vec_is new_rcrd
 #'
 #' @return Throws a record
 #' @export
@@ -17,17 +20,19 @@
 #' c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 3),
 #' c(1, 2, 3, 4, 5, 3, 1, 8, 9, 1, 2, 3, 4, 5, 2, 7, 8, 1, 10, 0, 10)
 #' ))
-player_throws <- function(player_no, throws, score= numeric()) {
+player_throws <- function(player_no, throws, score = numeric()) {
   if (length(player_no) != length(throws)) {
     stop("Length of player_no and throws must be the same.")
   }
-
+  if (vctrs::vec_is_empty(player_no) || vctrs::vec_is_empty(throws)){
+    stop("Parameters for this function can't be empty except score.")
+  }
   # Check if player_no is numeric
   vctrs::vec_assert(player_no, numeric())
 
   # Check if player_no is numeric
   vctrs::vec_assert(score, numeric())
-  if(length(score) == 0){
+  if (length(score) == 0) {
     score <- numeric(length(player_no))
   }
   # Check if throws is a list
@@ -111,39 +116,92 @@ player_throws <- function(player_no, throws, score= numeric()) {
     }
   }
 
-  throws <- vctrs::new_rcrd(list(player_no = player_no,
-                       throws = throws,
-                       score = score),
-                  class = "throws")
+  throws <- vctrs::new_rcrd(list(
+    player_no = player_no,
+    throws = throws,
+    score = score
+  ),
+  class = "throws")
   return(throws)
 }
 
-# Casting throws to data frame
-vec_cast.data.frame.throws <- function(x, to, ...){
+#' Vectorized Casting Function for Data Frame to Throws
+#'
+#' This function takes a data frame and casts it into a throws format.
+#'
+#' @param x A data frame to be casted.
+#' @param to The desired format for the casting.
+#' @param ... Additional arguments to be passed.
+#' @importFrom vctrs vec_data vec_cast
+#'
+#' @return A casted version of the data frame in throws format.
+#' @export
+vec_cast.data.frame.throws <- function(x, to, ...) {
   vctrs::vec_data(x)
 }
 
-# Casting data frame to throws
-vec_cast.throws.data.frame <- function(x, to, ...){
-  player_throws(x$player_no,x$throws, x$score)
+
+
+#' Vectorized Casting Function for Throws Data Frame
+#'
+#' This function takes a throws data frame and casts it into another form.
+#'
+#' @param x A data frame containing player number, throws, and score.
+#' @param to The desired format for the casting.
+#' @param ... Additional arguments to be passed.
+#' @importFrom vctrs vec_cast
+#'
+#' @return A casted version of the throws data frame.
+#' @export
+vec_cast.throws.data.frame <- function(x, to, ...) {
+  player_throws(x$player_no, x$throws, x$score)
 }
 
 
+
+
+#' Custom Formatting Function for Bowling Scorecards
+#'
+#' This function formats the bowling scorecards for each player in a custom vector format.
+#'
+#' @param x A record containing player numbers, their throws, and scores.
+#' @param ... Additional parameters (not used).
+#' @importFrom vctrs field
+#'
+#' @return A formatted representation of the bowling scorecards.
+#'
 #' @export
-# Redefine the custom format method for the throws class
+
 format.throws <- function(x, ...) {
   players <- vctrs::field(x, "player_no")
   throws <- vctrs::field(x, "throws")
-  score <- vctrs::field(x,"score")
+  score <- vctrs::field(x, "score")
   n_players <- length(players)
 
   scorecard <- matrix("", nrow = 21, ncol = n_players)
   colnames(scorecard) <- paste("Player", players)
   rownames(scorecard) <- c(
-    "Throw 1", "Throw 2", "Throw 3", "Throw 4", "Throw 5", "Throw 6",
-    "Throw 7", "Throw 8", "Throw 9", "Throw 10", "Throw 11", "Throw 12",
-    "Throw 13", "Throw 14", "Throw 15", "Throw 16", "Throw 17", "Throw 18",
-    "Throw 19", "Throw 20", "Throw 21"
+    "Throw 1",
+    "Throw 2",
+    "Throw 3",
+    "Throw 4",
+    "Throw 5",
+    "Throw 6",
+    "Throw 7",
+    "Throw 8",
+    "Throw 9",
+    "Throw 10",
+    "Throw 11",
+    "Throw 12",
+    "Throw 13",
+    "Throw 14",
+    "Throw 15",
+    "Throw 16",
+    "Throw 17",
+    "Throw 18",
+    "Throw 19",
+    "Throw 20",
+    "Throw 21"
   )
 
   for (i in seq_len(n_players)) {
@@ -160,13 +218,17 @@ format.throws <- function(x, ...) {
 
           if (player_throws[throw_index + 1] == 10) {
             scorecard[2 * frame, i] <- "X"
-            scorecard[2 * frame + 1, i] <- ifelse(player_throws[throw_index + 2] == 10, "X", player_throws[throw_index + 2])
+            scorecard[2 * frame + 1, i] <-
+              ifelse(player_throws[throw_index + 2] == 10, "X", player_throws[throw_index + 2])
           } else {
-            scorecard[2 * frame, i] <- ifelse(player_throws[throw_index + 1] == 0, "-", player_throws[throw_index + 1])
-            scorecard[2 * frame + 1, i] <- ifelse(player_throws[throw_index + 2] == 10, "X", player_throws[throw_index + 2])
+            scorecard[2 * frame, i] <-
+              ifelse(player_throws[throw_index + 1] == 0, "-", player_throws[throw_index + 1])
+            scorecard[2 * frame + 1, i] <-
+              ifelse(player_throws[throw_index + 2] == 10, "X", player_throws[throw_index + 2])
           }
 
-          if (length(player_throws) == 21 && player_throws[21] == 10) {
+          if (length(player_throws) == 21 &&
+              player_throws[21] == 10) {
             scorecard[2 * frame + 1, i] <- "X"
           }
         } else {
@@ -175,9 +237,11 @@ format.throws <- function(x, ...) {
             scorecard[2 * frame, i] <- "/"
           } else {
             scorecard[2 * frame - 1, i] <- player_throws[throw_index]
-            scorecard[2 * frame, i] <- ifelse(player_throws[throw_index + 1] == 0, "-", player_throws[throw_index + 1])
+            scorecard[2 * frame, i] <-
+              ifelse(player_throws[throw_index + 1] == 0, "-", player_throws[throw_index + 1])
           }
-          scorecard[2 * frame + 1, i] <- ifelse(length(player_throws) == 21, player_throws[21], "-")
+          scorecard[2 * frame + 1, i] <-
+            ifelse(length(player_throws) == 21, player_throws[21], "-")
         }
       } else {
         if (player_throws[throw_index] == 10) {
@@ -190,7 +254,8 @@ format.throws <- function(x, ...) {
           if (player_throws[throw_index] + player_throws[throw_index + 1] == 10) {
             scorecard[2 * frame, i] <- "/"
           } else {
-            scorecard[2 * frame, i] <- ifelse(player_throws[throw_index + 1] == 0, "-", player_throws[throw_index + 1])
+            scorecard[2 * frame, i] <-
+              ifelse(player_throws[throw_index + 1] == 0, "-", player_throws[throw_index + 1])
           }
           throw_index <- throw_index + 2
         }
@@ -202,22 +267,21 @@ format.throws <- function(x, ...) {
 
   output <- character(nrow(scorecard))
   for (i in seq_len(nrow(scorecard))) {
-    output[i] <- paste(scorecard[i, ], collapse = "         ")
+    output[i] <- paste(scorecard[i,], collapse = "         ")
   }
-  for (i in seq_len(ncol(scorecard))){
-    cat("Player",i, " ")
+  for (i in seq_len(ncol(scorecard))) {
+    cat("Player", i, " ")
   }
   cat("\n")
   cat(output, sep = "\n")
   suppressWarnings({
-  if(any(score) != 0){
-    for (i in seq_len(ncol(scorecard))){
-      cat("---------" )
+    if (any(score) != 0) {
+      for (i in seq_len(ncol(scorecard))) {
+        cat("---------")
+      }
+      cat("\n")
+      cat(score, sep = "        ")
+      cat("\n")
     }
-    cat("\n")
-    cat(score, sep = "        ")
-    cat("\n")
-  }
   })
 }
-

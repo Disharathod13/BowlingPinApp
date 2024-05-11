@@ -7,6 +7,8 @@ Description: It counts the score of a ten-pin bowling game for two players and r
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
+Imports: 
+  dplyr, vctrs
 RoxygenNote: 7.3.1
 Suggests: 
     testthat (>= 3.0.0)

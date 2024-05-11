@@ -2,22 +2,22 @@
 % Please edit documentation in R/player_throws.R
 \name{player_throws}
 \alias{player_throws}
-\title{Title}
+\title{Player Throws and Scores}
 \usage{
 player_throws(player_no, throws, score = numeric())
 }
 \arguments{
-\item{player_no}{player number}
+\item{player_no}{Player number}
 
-\item{throws}{a list of throws of each player}
+\item{throws}{A list of throws of each player}
 
-\item{score}{total score}
+\item{score}{Total score}
 }
 \value{
-throws a record
+Throws a record
 }
 \description{
-Title
+Functions to handle player throws in a ten pin bowling game and calculate their scores.
 }
 \examples{
 

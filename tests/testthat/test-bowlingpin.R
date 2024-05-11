@@ -17,3 +17,6 @@ test_that("bowlingpin function calculates scores correctly", {
   ), class = "throws")
   expect_equal(result, expected_output)
 })
+
+
+
