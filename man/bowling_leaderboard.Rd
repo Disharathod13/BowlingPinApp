@@ -4,7 +4,7 @@
 \alias{bowling_leaderboard}
 \title{Determine the winner of a bowling game between two players.}
 \usage{
-bowling_leaderboard(player1_rolls, player2_rolls)
+bowling_leaderboard(player_rolls)
 }
 \arguments{
 \item{player1_rolls}{A numeric vector representing the scores for every throw of player 1.}
@@ -18,8 +18,13 @@ A character string indicating the winner of the game ("Player 1", "Player 2", or
 This function calculates the scores for two players in a bowling game and determines the winner. It also displays the final scores of both players.
 }
 \examples{
-player1_rolls <- c(2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2)
-player2_rolls <- c(2,2,2,2,8,2,6,2,2,2,2,2,5,2,2,2,4,2,2,3)
-bowling_leaderboard(player1_rolls, player2_rolls)
+
+player_rolls <- player_throws(player_no = c(1, 2, 3),
+throws = list(
+c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 6, 10),
+c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 3),
+c(1, 2, 3, 4, 5, 3, 1, 8, 9, 1, 2, 3, 4, 5, 2, 7, 8, 1, 10, 0, 10)
+))
+bowling_leaderboard(player_rolls)
 
 }

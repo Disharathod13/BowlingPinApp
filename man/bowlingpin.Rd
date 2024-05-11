@@ -4,7 +4,7 @@
 \alias{bowlingpin}
 \title{Main function to run the ten-pin bowling game for two players}
 \usage{
-bowlingpin(player1_rolls, player2_rolls)
+bowlingpin(player_rolls)
 }
 \arguments{
 \item{player1_rolls}{A numeric vector having scores for every throw of player 1}
@@ -18,7 +18,11 @@ A numeric vector containing the total score for each user.
 Enter your individual game scores and the function will give you the total score at the end
 }
 \examples{
-player1_rolls <- c(2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2)
-player2_rolls <- c(2,2,2,2,8,2,6,2,2,2,2,2,5,2,2,2,4,2,2,3)
-bowlingpin(player1_rolls,player2_rolls)
+player_rolls<- player_throws(player_no = c(1, 2, 3),
+throws = list(
+c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 6, 10),
+c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 3),
+c(1, 2, 3, 4, 5, 3, 1, 8, 9, 1, 2, 3, 4, 5, 2, 7, 8, 1, 10, 0, 10)
+))
+bowlingpin(player_rolls)
 }
