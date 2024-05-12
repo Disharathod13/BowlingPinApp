@@ -1,0 +1,19 @@
+---
+title: "bowlingpin"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{bowlingpin}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(bowlingpin)
+```

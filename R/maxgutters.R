@@ -6,8 +6,6 @@
 #'
 #' @keywords internal
 #'
-
-
 calculate_gutters <- function(player_rolls) {
   num_gutters <- sum(player_rolls == 0)
   return(num_gutters)

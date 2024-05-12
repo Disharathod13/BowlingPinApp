@@ -140,8 +140,6 @@ vec_cast.data.frame.throws <- function(x, to, ...) {
   vctrs::vec_data(x)
 }
 
-
-
 #' Vectorized Casting Function for Throws Data Frame
 #'
 #' This function takes a throws data frame and casts it into another form.
@@ -157,8 +155,27 @@ vec_cast.throws.data.frame <- function(x, to, ...) {
   player_throws(x$player_no, x$throws, x$score)
 }
 
+#' Prototyping vector as data frame
+#'
+#' @param x First parameter of data frame class
+#' @param y Second parameter of throws class
+#' @param ... Additional parameters
+#'
+#' @return A data frame type
+#' @export
+vec_ptype2.data.frame.throws <- function(x, y, ...){
+  data.frame()
+}
 
-
+#' Prototyping as data frame in reverse order
+#'
+#' @param x First parameter of data frame class
+#' @param y Second parameter of throws class
+#' @param ... Additional parameters
+#'
+#' @return A data frame type
+#' @export
+vec_ptype2.throws.data.frame <- vec_ptype2.data.frame.throws
 
 #' Custom Formatting Function for Bowling Scorecards
 #'
