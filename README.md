@@ -12,7 +12,7 @@ to calculate scores and another to format the results into a custom
 vector format. Additionally, the package ensures validation of input
 data and offers clear documentation with usage examples. The
 “max_gutters” function of bowlingpin package compares the number of
-gutters between players rolls and determines which player had the most,
+gutters between 2 players and determines which player had the most,
 providing a message with the player’s identifier and the count of
 gutters. The “max_strikes” function compares the number of strikes
 between two players rolls and identifies the player with the highest

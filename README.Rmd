@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 The "bowlingpin" package provides functions to calculate and display bowling scores for players based on their throws. It includes a function to calculate scores and another to format the results into a custom vector format. Additionally, the package ensures validation of input data and offers clear documentation with usage examples. 
-The "max_gutters" function of bowlingpin package compares the number of gutters between players rolls and determines which player had the most, providing a message with the player's identifier and the count of gutters. 
+The "max_gutters" function of bowlingpin package compares the number of gutters between 2 players and determines which player had the most, providing a message with the player's identifier and the count of gutters. 
 The "max_strikes" function compares the number of strikes between two players rolls and identifies the player with the highest count, providing a message indicating the player and the number of strikes they achieved. 
 The "bowling_winner" function determines the winner of a bowling game between players based on their scores, showcasing the victorious player's identity. 
 The "player_throws" function manages player throws in a ten-pin bowling game, ensuring compliance with game rules by accepting player numbers, throws (as a list), and optionally, scores. Thorough validation checks are performed to ensure the integrity of input data. Additionally, "format.throws" facilitates the presentation of bowling scorecards, organizing player throws and scores into a structured and visually comprehensible format. 

@@ -14,6 +14,155 @@ knitr::opts_chunk$set(
 )
 ```
 
+# Introduction
+
+Introducing the "bowlingpin" package, a comprehensive toolset designed to streamline the calculation and presentation of bowling scores for players. This package encompasses essential functionalities, including score calculation, scorecard formatting, and winner determination, ensuring a seamless and enjoyable bowling experience. 
+
+## Setup
+
+To set up the "bowlingpin" package, simply execute the following code snippet in your R environment:
+
 ```{r setup}
 library(bowlingpin)
 ```
+
+This command loads the "bowlingpin" package into your current R session, making all its functionalities and features readily accessible for use. With the package now loaded, you can seamlessly calculate bowling scores, format scorecards, determine game winners, and perform various other tasks related to bowling game management.
+
+## Key Features
+
+### 1. Score Comparison
+
+**max_gutters**: Compare gutter counts between players, highlighting the player with the most gutters.
+
+**max_strikes**: Identify the player with the highest count of strikes, providing valuable insights into performance.
+
+### 2. Winner Determination
+
+**bowling_winner**: Conclusively determine the victor of a bowling game, simplifying post-game analysis.
+
+### 3. Player Management
+
+**player_throws**: Guarantee adherence to game rules by meticulously validating player throws and scores.
+
+### 4. Scorecard Formatting
+
+**format.throws**: Elegantly organize scorecards, enhancing readability and interpretation of game results.
+
+With its user-friendly interface and robust functionalities, the "bowlingpin" package promises to be a valuable asset in managing bowling games effectively and efficiently.
+
+## Detailed Usage
+
+# Introduction to the bowlingpin Package
+
+The **bowlingpin** package offers a comprehensive set of functions designed to facilitate the calculation, comparison, and visualization of bowling scores and performance metrics. Whether you're a casual bowler looking to analyze your game or a seasoned competitor seeking to optimize your strategy, this package provides the tools you need to make sense of bowling data effectively. In this vignette, we'll explore each function in detail, discussing their parameters, descriptions, and practical applications.
+
+## Function Descriptions and Usage
+
+### 1. `bowlingpin`
+
+#### Description:
+The `bowlingpin` function is the cornerstone of the package, providing users with a clear and concise summary of bowling scores. It takes a dataset of player throws as input and generates a formatted representation of the bowling scorecard, showcasing each player's throws and final scores in an organized format.
+
+#### Parameters:
+- `player_rolls`: A dataset containing player numbers and their corresponding throws.
+
+#### Usage:
+```{r}
+library(bowlingpin)
+player_rolls <- player_throws(player_no = c(1, 2, 3),
+  throws = list(
+  c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 6, 10),
+  c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 3),
+  c(1, 2, 3, 4, 5, 3, 1, 8, 9, 1, 2, 3, 4, 5, 2, 7, 8, 1, 10, 0, 10)
+))
+bowlingpin(player_rolls)
+```
+
+#### Notes:
+- Ensure that the input dataset is properly formatted with the correct player numbers and throws.
+- Verify that the throws follow the rules of ten-pin bowling to generate accurate scorecards.
+
+### 2. `max_gutters`
+
+#### Description:
+The `max_gutters` function allows users to compare the gutter counts between two players, highlighting the player with the most gutters. It's particularly useful for identifying areas of improvement and assessing lane performance.
+
+#### Parameters:
+- `player1_rolls`: A numeric vector representing the throws of the first player.
+- `player2_rolls`: A numeric vector representing the throws of the second player.
+
+#### Usage:
+```{r}
+library(bowlingpin)
+player1_rolls <- c(0, 0, 3, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+player2_rolls <- c(0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0)
+max_gutters(player1_rolls, player2_rolls)
+```
+
+#### Notes:
+- Ensure that the input vectors accurately represent the throws of each player.
+- Be mindful of the interpretation of gutter counts, as higher counts may indicate areas for improvement in player technique.
+
+### 3. `max_strikes`
+
+#### Description:
+The `max_strikes` function compares the number of strikes between two players' rolls and identifies the player with the highest count, providing valuable insights into performance and proficiency in achieving strikes.
+
+#### Parameters:
+- `player1_rolls`: A numeric vector representing the throws of the first player.
+- `player2_rolls`: A numeric vector representing the throws of the second player.
+
+#### Usage:
+```{r}
+library(bowlingpin)
+player1_rolls <- c(10, 3, 4, 10, 5, 10, 7, 2, 3, 4, 10, 10, 10, 6, 7, 8, 9, 1, 2, 3)
+player2_rolls <- c(10, 10, 4, 3, 5, 10, 10, 2, 3, 4, 10, 10, 10, 6, 7, 8, 9, 1, 2, 3)
+max_strikes(player1_rolls, player2_rolls)
+```
+
+#### Notes:
+- Ensure that the input vectors accurately represent the throws of each player.
+- Consider the strategic implications of strike counts, as they can influence overall game scores and outcomes.
+
+### 4. `bowling_winner`
+
+#### Description:
+The `bowling_winner` function conclusively determines the winner of a bowling game between players based on their scores, simplifying post-game analysis and providing closure to competitive matches.
+
+#### Parameters:
+- `player_rolls`: A dataset containing player numbers and their corresponding throws.
+
+#### Usage:
+```{r}
+player_rolls <- player_throws(player_no = c(1, 2, 3),
+ throws = list(
+ c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 6, 10),
+ c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 3),
+ c(1, 2, 3, 4, 5, 3, 1, 8, 9, 1, 2, 3, 4, 5, 2, 7, 8, 1, 10, 0, 10)
+ ))
+bowling_winner(player_rolls)
+```
+
+### 5. player_throws Function
+
+#### Description:
+
+The player_throws function manages player throws in a ten-pin bowling game, ensuring compliance with game rules. It accepts player numbers, throws (as a list), and optionally, scores. Thorough validation checks are performed to ensure the integrity of input data.
+
+#### Parameters:
+
+`player_no`: Numeric vector specifying player numbers.
+`throws`: List of numeric vectors representing throws for each player.
+`score` (Optional): Numeric vector representing scores for each player.
+
+#### Usage:
+```{r}
+player_rolls <- player_throws(player_no = c(1, 2, 3),
+ throws = list(
+ c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 6, 10),
+ c(2, 3, 4, 5, 6, 4, 8, 1, 1, 2, 3, 4, 5, 5, 7, 2, 9, 1, 4, 3),
+ c(1, 2, 3, 4, 5, 3, 1, 8, 9, 1, 2, 3, 4, 5, 2, 7, 8, 1, 10, 0, 10)
+ ))
+```
+
+Thank you for choosing the bowlingpin package to enhance your bowling experience! We appreciate your trust in our tools, and we're thrilled to be a part of your journey to better understand and enjoy the game of bowling. If you have any feedback, suggestions, or questions, please don't hesitate to reach out. Happy bowling!
